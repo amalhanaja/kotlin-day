@@ -19,6 +19,8 @@ dependencies {
     implementation(Libs.KtorHostCommon)
     implementation(Libs.KtorGson)
     implementation(Libs.JodaTime)
+    implementation(Libs.Exposed)
+    implementation(Libs.H2Database)
     testImplementation(Libs.Junit)
     testImplementation(Libs.KtorTest)
     testImplementation(Libs.Mockk)

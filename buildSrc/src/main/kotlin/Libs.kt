@@ -33,4 +33,6 @@ object Libs {
     const val KtorHostCommon = "io.ktor:ktor-server-host-common:${Versions.Ktor}"
     const val KtorGson = "io.ktor:ktor-gson:${Versions.Ktor}"
     const val KtorTest = "io.ktor:ktor-server-tests:${Versions.Ktor}"
+    const val Exposed = "org.jetbrains.exposed:exposed:${Versions.Exposed}"
+    const val H2Database = "com.h2database:h2:${Versions.H2Database}"
 }

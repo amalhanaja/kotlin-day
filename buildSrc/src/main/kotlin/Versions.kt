@@ -14,4 +14,6 @@ object Versions {
     const val Ktor = "1.0.0"
     const val Logback = "1.2.3"
     const val Mockk = "1.8.13.kotlin13"
+    const val Exposed = "0.11.2"
+    const val H2Database = "1.4.197"
 }
