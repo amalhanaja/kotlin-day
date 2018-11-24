@@ -20,6 +20,8 @@ dependencies {
     implementation(Libs.KtorGson)
     implementation(Libs.JodaTime)
     testImplementation(Libs.Junit)
+    testImplementation(Libs.KtorTest)
+    testImplementation(Libs.Mockk)
 }
 
 tasks.withType<KotlinCompile> {

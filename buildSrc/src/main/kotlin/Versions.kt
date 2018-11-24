@@ -13,4 +13,5 @@ object Versions {
     //BackEnd
     const val Ktor = "1.0.0"
     const val Logback = "1.2.3"
+    const val Mockk = "1.8.13.kotlin13"
 }

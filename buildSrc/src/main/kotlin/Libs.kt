@@ -1,6 +1,8 @@
 object Libs {
     const val JodaTime = "joda-time:joda-time:${Versions.JodaTime}"
 
+    const val Mockk = "io.mockk:mockk:${Versions.Mockk}"
+
     // Frontend
     const val KotlinxHtmlJs = "org.jetbrains.kotlinx:kotlinx-html-js:" +
             Versions.KotlinxHtml
@@ -30,4 +32,5 @@ object Libs {
     const val KtorCore = "io.ktor:ktor-server-core:${Versions.Ktor}"
     const val KtorHostCommon = "io.ktor:ktor-server-host-common:${Versions.Ktor}"
     const val KtorGson = "io.ktor:ktor-gson:${Versions.Ktor}"
+    const val KtorTest = "io.ktor:ktor-server-tests:${Versions.Ktor}"
 }
