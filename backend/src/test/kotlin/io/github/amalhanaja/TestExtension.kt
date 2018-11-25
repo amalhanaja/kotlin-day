@@ -1,10 +1,14 @@
 package io.github.amalhanaja
 
 import com.google.gson.Gson
+import io.github.amalhanaja.notes.NoteTable
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.TestApplicationEngine
 import io.ktor.server.testing.TestApplicationResponse
 import io.ktor.server.testing.withTestApplication
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.test.expect
 
 fun withTestServer(test: TestApplicationEngine.() -> Unit) {
@@ -26,4 +30,12 @@ fun TestApplicationResponse.expectStatusCode(statusCode: HttpStatusCode) {
 
 fun TestApplicationResponse.expectEmptyResponse() {
     expect(true) { content.isNullOrEmpty() }
+}
+
+fun connectTestDatabase() {
+    Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "org.h2.Driver").also {
+        transaction(it) {
+            SchemaUtils.create(NoteTable)
+        }
+    }
 }

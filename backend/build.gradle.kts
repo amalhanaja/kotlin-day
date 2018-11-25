@@ -24,6 +24,7 @@ dependencies {
     testImplementation(Libs.Junit)
     testImplementation(Libs.KtorTest)
     testImplementation(Libs.Mockk)
+    testImplementation(Libs.H2Database)
 }
 
 tasks.withType<KotlinCompile> {
