@@ -29,12 +29,12 @@ class NoteRouterTest {
 
     @Test
     fun notes() = withTestServer {
-        val list: List<List<Note>> = listOf(emptyList(), listOf(Note(id = "ID")))
+        val list: List<List<Note>> = listOf(emptyList(), listOf(Note(id = "ID", createdAt = utcDateTime)))
         every { NoteService.list() } returnsMany list
-        list.forEach { expected ->
+        list.forEach { item ->
             handleRequest(HttpMethod.Get, "/notes").apply {
                 response.expectStatusCode(HttpStatusCode.OK)
-                response.expectJson(expected)
+                response.expectJson(item.map(Note::asResponse))
             }
         }
         verify(exactly = 2) { NoteService.list() }
