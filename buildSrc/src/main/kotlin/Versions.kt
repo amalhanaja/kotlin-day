@@ -5,6 +5,7 @@ object Versions {
     const val JUnit = "4.12"
     const val Shadowjar = "4.0.3"
     const val JodaTime = "2.10.1"
+    const val DockerRemoteAPI = "4.0.5"
 
     const val KotlinReactWrapper = "16.6.0-pre.60-kotlin-1.3.0"
     const val KotlinReactRouterDomWrapper = "4.3.1-pre.60-kotlin-1.3.0"

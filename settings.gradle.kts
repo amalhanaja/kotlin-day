@@ -1,5 +1,16 @@
 enableFeaturePreview("GRADLE_METADATA")
 
 rootProject.name = "kotlin-day"
-//include(":kotlin-day-frontend")
+
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "kotlin2js" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}
+
 include(":backend")
+include(":frontend")
