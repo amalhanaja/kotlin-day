@@ -80,6 +80,7 @@ tasks {
         dependsOn(buildDockerImage)
         targetImageId(buildDockerImage.imageId)
         portBindings.set(listOf("$port:$port"))
+        memory.set(160_000_000) // 160MB
         autoRemove.set(true)
     }
 
