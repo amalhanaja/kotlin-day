@@ -29,7 +29,7 @@ class NoteRouterTest {
 
     @Test
     fun notes() = withTestServer {
-        val list: List<List<NoteResponse>> = listOf(emptyList(), listOf(SampleObject.noteResponse))
+        val list: List<List<Note>> = listOf(emptyList(), listOf(Note(id = "ID")))
         every { NoteService.list() } returnsMany list
         list.forEach { expected ->
             handleRequest(HttpMethod.Get, "/notes").apply {
@@ -42,10 +42,11 @@ class NoteRouterTest {
 
     @Test
     fun noteById() = withTestServer {
-        every { NoteService.noteById("ID") } returns SampleObject.noteResponse
+        val note = validNote.copy(createdAt = utcDateTime)
+        every { NoteService.noteById("ID") } returns note
         handleRequest(HttpMethod.Get, "/notes/ID").apply {
             response.expectStatusCode(HttpStatusCode.OK)
-            response.expectJson(SampleObject.noteResponse)
+            response.expectJson(note.asResponse)
         }
         every { NoteService.noteById("NO_ID") } throws UnsupportedOperationException()
         handleRequest(HttpMethod.Get, "/notes/NO_ID").apply {

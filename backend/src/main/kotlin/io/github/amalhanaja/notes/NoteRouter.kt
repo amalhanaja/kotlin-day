@@ -32,7 +32,7 @@ fun Route.notesRouter() {
         route("/{noteId}") {
             get {
                 runCatching {
-                    NoteService.noteById(call.parameters["noteId"]!!)
+                    NoteService.noteById(call.parameters["noteId"]!!).asResponse
                 }.onSuccess { res ->
                     call.respond(HttpStatusCode.OK, res)
                 }.onFailure {

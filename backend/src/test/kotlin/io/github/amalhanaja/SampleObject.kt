@@ -1,7 +1,7 @@
 package io.github.amalhanaja
 
-import io.github.amalhanaja.notes.NoteResponse
+import java.util.*
 
 object SampleObject {
-    val noteResponse = NoteResponse(id = "ID", title = "TITLE", body = "BODY", date = "DATE")
+    val uuid = UUID.fromString("33b6f35b-5e0f-4d4c-85fd-b4a0898d74b3")
 }

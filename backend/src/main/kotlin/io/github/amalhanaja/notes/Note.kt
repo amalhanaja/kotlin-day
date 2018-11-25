@@ -9,4 +9,12 @@ data class Note(
     val createdAt: DateTime? = null,
     val updatedAt: DateTime? = null,
     val deletedAt: DateTime? = null
-)
+) {
+    val asResponse: NoteResponse
+        get() = NoteResponse(
+            id = id,
+            title = title,
+            body = body,
+            date = createdAt!!.toString()
+        )
+}

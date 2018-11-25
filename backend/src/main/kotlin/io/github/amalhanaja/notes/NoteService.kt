@@ -1,31 +1,38 @@
 package io.github.amalhanaja.notes
 
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
+import io.github.amalhanaja.utcDateTime
+import io.github.amalhanaja.uuid
 
 object NoteService {
-    fun list(): List<NoteResponse> {
-        return (1 until 10).map { int ->
-            NoteResponse(
-                "#$int",
-                "Title #$int",
-                "Body #$int",
-                DateTime.now(DateTimeZone.UTC).toString()
-            )
-        }
+    fun list(): List<Note> {
+        return NoteDao.all().map(NoteDao::toNote)
     }
 
-    fun noteById(id: String): NoteResponse {
-        return list().first { it.id == id }
+    fun noteById(id: String): Note {
+        return NoteDao[id.uuid].toNote()
     }
 
     fun createNote(note: Note) {
+        NoteDao.new(note.id.uuid) {
+            title = note.title
+            body = note.body
+            createdAt = utcDateTime.millis
+        }
     }
 
     fun updateNote(note: Note) {
+        NoteDao[note.id.uuid].apply {
+            title = note.title
+            body = note.body
+            updatedAt = utcDateTime.millis
+        }
     }
 
     fun deleteNote(id: String) {
+        NoteDao[id.uuid].apply {
+            deletedAt = utcDateTime.millis
+            updatedAt = utcDateTime.millis
+        }
     }
 
 }
