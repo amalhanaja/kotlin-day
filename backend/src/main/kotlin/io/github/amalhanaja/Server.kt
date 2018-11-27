@@ -26,7 +26,9 @@ fun Application.module(testing: Boolean = false) {
         method(HttpMethod.Get)
         method(HttpMethod.Put)
         method(HttpMethod.Post)
+        method(HttpMethod.Options)
         method(HttpMethod.Delete)
+        anyHost()
     }
     install(ContentNegotiation) { gson() }
     routing {
