@@ -81,16 +81,17 @@ tasks {
         targetImageId(buildDockerImage.imageId)
         portBindings.set(listOf("$port:$port"))
         memory.set(160_000_000) // 160MB
+        containerName.set("${rootProject.name}-${project.name}")
         autoRemove.set(true)
     }
 
     val runDockerContainer: DockerStartContainer by creating(DockerStartContainer::class) {
         dependsOn(createDockerContainer)
-        targetContainerId(createDockerContainer.containerId)
+        targetContainerId("${rootProject.name}-${project.name}")
     }
 
     val stopDockerContainer: DockerStopContainer by creating(DockerStopContainer::class) {
-        targetContainerId(createDockerContainer.containerId)
+        targetContainerId("${rootProject.name}-${project.name}")
     }
 }
 
